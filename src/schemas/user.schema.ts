@@ -17,15 +17,13 @@ export const createUserSchema = z.object({
     .regex(
       /^[a-z0-9_]+$/i,
       "Username hanya boleh mengandung huruf, angka dan underscore"
-    )
-    .optional(),
+    ),
 
   email: z
     .string()
     .trim()
     .toLowerCase()
-    .email("Format email tidak valid")
-    .optional(),
+    .email("Format email tidak valid"),
 
   password: z
     .string()
@@ -49,9 +47,10 @@ export const updateUserSchema = z.object({
     .regex(
       /^[a-z0-9_]+$/i,
       "Username hanya boleh mengandung huruf, angka dan underscore"
-    ),
+    )
+      .optional(),
 
-  email: z.string().trim().toLowerCase().email("Format email tidak valid"),
+  email: z.string().trim().toLowerCase().email("Format email tidak valid").optional(),
 
   password: z.preprocess(
     (v) => (typeof v === "string" && v.trim() === "" ? undefined : v),
