@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?  @db.VarChar(255)
+  username  String   @unique(map: "username") @db.VarChar(255)
+  email     String   @unique(map: "email") @db.VarChar(255)
+  password  String?  @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Herovideo {
+  id    Int    @id @default(autoincrement())
+  video String @db.VarChar(255)
+  title String @db.Text
+}
+
+model Product {
+  id          Int    @id @default(autoincrement())
+  image       String @db.VarChar(255)
+  description String @db.Text
+}

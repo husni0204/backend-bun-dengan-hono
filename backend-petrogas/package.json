@@ -1,0 +1,14 @@
+{
+  "name": "backend-petrogas",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "hono": "^4.12.21"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/node": "^25.9.1",
+    "prisma": "^7.8.0"
+  }
+}
